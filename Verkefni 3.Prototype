@@ -1,0 +1,32 @@
+//Sindri Snær Hjaltalin
+function Geimflauga (name, speed) {
+	this.name = name
+	this.speed = speed
+	this.life = 10
+}
+
+Geimflauga.prototype.fly = function (speed) {
+	this.speed = ++speed
+}
+
+const f1 = new Geimflauga('Phoenix', 3)
+const f2 = new Geimflauga('Executor', 5)
+const f3 = new Geimflauga('Buzzard', 14)
+
+------------------------------------------------------------------
+
+class Geimflauga {
+	constructor(name,speed) {
+		this.speed = speed;
+		this.name = name;
+		this.life = 10;
+	 }
+	 fly(speed) {
+		this.speed = ++speed
+
+	 }
+	}
+
+	let f1 = new Geimflauga("Phoenix", 3)
+	let f2 = new Geimflauga("Executor", 5)
+	let f3 = new Geimflauga("Buzzard", 14)
