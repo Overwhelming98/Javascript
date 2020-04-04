@@ -1,0 +1,48 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --hue-neutral: 200;
+  --hue-wrong: 0;
+  --hue-correct: 145;
+}
+
+body {
+  --hue: var(--hue-neutral);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--hue), 100%, 80%);
+}
+
+body.correct {
+  --hue: var(--hue-correct);
+}
+
+body.wrong {
+  --hue: var(--hue-wrong);
+}
+
+
+.button.correct {
+  --hue: var(--hue-correct);
+  color: black;
+}
+
+.button.wrong {
+  --hue: var(--hue-wrong);
+}
+
+.start-button, .button-btn {
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.hide {
+  display: none;
+}

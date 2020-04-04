@@ -1,0 +1,19 @@
+1.Afhverju er getElementById() fljótleglegasta aðferðin?
+
+þú þarft bara að kalla á hana einu sinni
+og það er mikið fljótara en allar aðrar aðferðir http://ericdelabar.com/2008/04/javascript-getelementbyid-performance.html
+
+2.Hver er munurinn á static og live NodeList?
+
+stundum er Nodelist live og stundum static, live þýðir að breytingar í DOM
+eru speiglaðar í safninu en static þýðir að breytingar í DOM hafa ekki 
+áhrif á safnið.
+
+3.Hver er munurinn á true og false í AddEventListener
+
+ef AddEventListener er ture þá notar það useCapture eftir það er gert
+þá eru öll events af sömu týpu send og skráð áður en þau eru send til
+EvnetTarget sem er neðar í DOM trénu ef false þá gerir það þetta ekki.
+
+
+
