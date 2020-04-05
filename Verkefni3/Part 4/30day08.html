@@ -1,0 +1,131 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+
+<span class='hl'><h2>pick a color JS</span></h2>
+
+
+  <div class="controls">
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#00FF00" data-dad="color">
+  </div>
+
+
+</div>
+
+
+
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+const canvas = document.querySelector('#draw');
+const ctx = canvas.getContext('2d');
+canvas.width = 1920;
+canvas.height = 800;
+ctx.strokeStyle = '#00FF00';
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.lineWidth = 10;
+
+//Ég er að reyna að láta base sjórna lit á ctx strokeStyle aka litum sem kermur
+//þegar þú teiknar en :C
+// gerði lika css breytu --base er ekki að ná því :C
+// veit ekki hverju öðru ég get breytt dettur ekkert í hug
+
+
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+function Draw(e) {
+	if(!isDrawing) return; // hættir að teikna ef vinstir musar takki er ekki niðri
+	console.log(e);
+	ctx.beginPath();
+	ctx.moveTo(lastX, lastY);
+	ctx.lineTo(e.offsetX, e.offsetY);
+	ctx.stroke();
+	//lastx = e.offsetX;
+	//lasty = e.offsetY;
+	[lastX, lastY] = [e.offsetX, e.offsetY];
+
+}
+canvas.addEventListener('mousedown', (e) => {
+	isDrawing = true;
+	[lastX, lastY] = [e.offsetX, e.offsetY];
+} );
+
+canvas.addEventListener('mousemove', Draw);
+
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
+
+
+
+const inputs = document.querySelectorAll('.controls input');
+
+function handleUpdate() {
+      const suffix = this.dataset.dad || '';
+      document.documentElement.style.setProperty(`--${base.name}`, base.value + suffix);
+
+    }
+
+base.addEventListener('change', () => handleUpdate = true);
+
+
+
+//bæti við keycode detection að því mér finst það cool og veit ekki hverju ég
+//á að breyta skil ekki afh ekkert sem ég gerði virkiaði ekki þetta ætti ekki að vera
+//svona mikið vesen
+const password = [];
+const cheatCode = 'cannotchangecolor';
+
+
+window.addEventListener('keyup', (e) => {
+	console.log(e.key);
+	password.push(e.key);
+	password.splice(-cheatCode.length - 1, password.length - password.length);
+	
+
+	if(password.join('').includes(cheatCode)) {
+		document.write ("Draw in real life you cheater!");
+
+		
+	}
+
+	console.log(password);
+});
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+
+  }
+
+.controls {
+	margin-bottom: 50px;
+}
+
+
+
+:root {
+	--base: #ffc600;
+
+}
+
+
+.hl {
+	text-align: center;
+}
+
+
+</style>
+
+</body>
+</html>
